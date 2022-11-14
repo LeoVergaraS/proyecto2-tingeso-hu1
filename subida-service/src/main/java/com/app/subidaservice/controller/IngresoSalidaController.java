@@ -36,4 +36,13 @@ public class IngresoSalidaController {
         }
         return ResponseEntity.ok(ingresoSalida);
     }
+
+    @GetMapping("/inasistencias")
+    public ResponseEntity<List<IngresoSalida>> getInasistencias() {
+        List <IngresoSalida> inasistencias = ingresoSalidaService.obtenerInasistencias();
+        if(inasistencias.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(inasistencias);
+    }
 }

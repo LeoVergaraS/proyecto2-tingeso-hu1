@@ -27,8 +27,8 @@ public class FileUploadController {
         try{
             String fileName = file.getOriginalFilename();
             fileUploadService.save(file);
+            ingresoSalidaService.eliminarIngresosSalidas();
             ingresoSalidaService.leerArchivoSubido(fileName);
-
             return ResponseEntity.ok().body("Archivo subido correctamente");
         }catch(Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());

@@ -27,8 +27,16 @@ public class IngresoSalidaService {
         return ingresoSalidaRepository.findAll();
     }
 
+    public List<IngresoSalida> obtenerInasistencias() {
+        return ingresoSalidaRepository.findInasistencias();
+    }
+
     public IngresoSalida obtenerIngresoSalida(Long id) {
         return ingresoSalidaRepository.findById(id).orElse(null);
+    }
+
+    public void eliminarIngresosSalidas() {
+        ingresoSalidaRepository.deleteAll();
     }
 
     private IngresoSalida lineaAIngresoSalida(String linea) throws ParseException{
