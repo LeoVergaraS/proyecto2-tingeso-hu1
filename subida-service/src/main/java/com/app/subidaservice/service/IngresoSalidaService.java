@@ -31,6 +31,10 @@ public class IngresoSalidaService {
         return ingresoSalidaRepository.findInasistencias();
     }
 
+    public List<IngresoSalida> obtenerSalidas() {
+        return ingresoSalidaRepository.findSalidas();
+    }
+
     public IngresoSalida obtenerIngresoSalida(Long id) {
         return ingresoSalidaRepository.findById(id).orElse(null);
     }

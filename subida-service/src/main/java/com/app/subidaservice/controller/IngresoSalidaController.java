@@ -45,4 +45,13 @@ public class IngresoSalidaController {
         }
         return ResponseEntity.ok(inasistencias);
     }
+
+    @GetMapping("/salidas")
+    public ResponseEntity<List<IngresoSalida>> getSalidas() {
+        List <IngresoSalida> salidas = ingresoSalidaService.obtenerSalidas();
+        if(salidas.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(salidas);
+    }
 }
