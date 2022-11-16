@@ -28,6 +28,33 @@ public class IngresoSalidaController {
         return ResponseEntity.ok(ingresosSalidas);
     }
 
+    @GetMapping("/atrasos/{rut}")
+    public ResponseEntity<List<Integer>> getAtrasos(@PathVariable("rut") String rut) {
+        List <Integer> atrasos = ingresoSalidaService.obtenerCantidadAtrasos(rut);
+        if(atrasos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(atrasos);
+    }
+
+    @GetMapping("/atrasos/rut")
+    public ResponseEntity<List<String>> getAtrasosRut() {
+        List <String> atrasosRut = ingresoSalidaService.obtenerRut();
+        if(atrasosRut.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(atrasosRut);
+    }
+
+    @GetMapping("/fecha")
+    public ResponseEntity<String> getFecha() {
+        String fecha = ingresoSalidaService.obtenerFecha();
+        if(fecha.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(fecha);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<IngresoSalida> getById(@PathVariable("id") Long id) {
         IngresoSalida ingresoSalida = ingresoSalidaService.obtenerIngresoSalida(id);

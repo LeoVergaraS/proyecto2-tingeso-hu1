@@ -6,6 +6,7 @@ import java.sql.Date;
 import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,22 @@ public class IngresoSalidaService {
 
     public IngresoSalida obtenerIngresoSalida(Long id) {
         return ingresoSalidaRepository.findById(id).orElse(null);
+    }
+
+    public List<String> obtenerRut() {
+        return ingresoSalidaRepository.findAtrasosRut();
+    }
+
+    public String obtenerFecha(){
+        return ingresoSalidaRepository.findFecha();
+    }
+
+    public List<Integer> obtenerCantidadAtrasos(String rut) {
+        List<Integer> cantPorAtrasos = new ArrayList<Integer>();
+        cantPorAtrasos.add(ingresoSalidaRepository.findAtrasosUno(rut));
+        cantPorAtrasos.add(ingresoSalidaRepository.findAtrasosDos(rut));
+        cantPorAtrasos.add(ingresoSalidaRepository.findAtrasosTres(rut));
+        return cantPorAtrasos;
     }
 
     public void eliminarIngresosSalidas() {
