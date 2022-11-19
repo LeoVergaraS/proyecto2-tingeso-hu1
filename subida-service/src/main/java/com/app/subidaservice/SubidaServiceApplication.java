@@ -22,9 +22,5 @@ public class SubidaServiceApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		fileUploadService.deleteDirectory();
 		fileUploadService.init();
-	}
-
-
-	
-
+	}	
 }
