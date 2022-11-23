@@ -1,5 +1,6 @@
-FROM openjdk:17 
-ARG JAR_FILE=target/subida-service.jar
-COPY ${JAR_FILE} subida-service.jar
-EXPOSE 8001
-ENTRYPOINT ["java","-jar","/subida-service.jar"]
+FROM openjdk:17
+VOLUME /tmp
+VOLUME /uploads
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
